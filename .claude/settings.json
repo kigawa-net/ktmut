@@ -1,0 +1,15 @@
+{
+    "hooks": {
+        "Stop": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "dir=\"$PWD\"; while [ \"$dir\" != \"/\" ]; do if [ -x \"$dir/test.sh\" ]; then bash \"$dir/test.sh\"; exit_code=$?; if [ \"$exit_code\" -ne 0 ]; then echo \"💥 Test failed - stopping execution\" >&2; exit 2; fi; break; fi; dir=$(dirname \"$dir\"); done"
+                    }
+                ]
+            }
+        ]
+    }
+}
